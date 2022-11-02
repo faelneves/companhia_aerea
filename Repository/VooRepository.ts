@@ -5,6 +5,7 @@ const voos: Array<IVoo> = [];
 
 export default class VooRepository implements IVooRepository {
   createVoo(voo: IVoo): boolean {
+    console.log(voo);
     voos.push(voo);
     return true;
   }

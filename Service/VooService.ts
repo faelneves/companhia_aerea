@@ -7,7 +7,7 @@ export default class VooService {
     this.vooRepository = vooRepository;
   }
   createVoo(voo: IVoo) {
-    this.vooRepository.createVoo(voo);
+    return this.vooRepository.createVoo(voo);
   }
   listVoo(params: IFilterVoo) {
     return this.vooRepository.filterVoo(params);
