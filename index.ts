@@ -14,9 +14,10 @@ app.get("/", (req, res) => {
   res.send("Comapania Aerea");
 });
 
-app.post("/createVoo", vooController.createVoo);
-
-app.get("/listVoo", vooController.listVoo);
+app.post("/voo/create", vooController.createVoo);
+app.get("/voo/list", vooController.listVoo);
+app.get("/voo/get/:id", vooController.getVoo);
+app.patch("/voo/changeStatus/:id", vooController.changeStatus);
 
 app.listen(process.env.PORT);
 

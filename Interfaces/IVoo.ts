@@ -2,8 +2,8 @@ import { ILocalizacao } from "./ILocalizacao";
 
 export enum Status {
   CONFIRMADO = "CONFIRMADO",
-  PENDING = "PENDING",
-  CANCELED = "CANCELED",
+  PENDENTE = "PENDENTE",
+  CANCELADO = "CANCELADO",
 }
 
 export interface IVoo {
@@ -12,8 +12,9 @@ export interface IVoo {
   origem: ILocalizacao;
   destino: ILocalizacao;
   partida: Date;
-  chegada?: Date;
   status: Status;
+  chegada?: Date;
+  ocupacao?: number;
 }
 
 export interface IFilterVoo {

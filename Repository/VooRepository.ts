@@ -4,10 +4,9 @@ import { IVooRepository } from "./IVooRepository";
 const voos: Array<IVoo> = [];
 
 export default class VooRepository implements IVooRepository {
-  createVoo(voo: IVoo): boolean {
-    console.log(voo);
+  createVoo(voo: IVoo): IVoo {
     voos.push(voo);
-    return true;
+    return voo;
   }
 
   filterVoo(params: IFilterVoo): Array<IVoo> {

@@ -10,8 +10,8 @@ export default class VooController {
 
   createVoo: RequestHandler = (request, response) => {
     try {
-      this.vooService.createVoo(request.body as IVoo);
-      response.status(201).send();
+      const voo = this.vooService.createVoo(request.body as IVoo);
+      response.status(201).send({ voo });
     } catch (error: any) {
       response.status(400).send({ error: error.message });
     }
@@ -19,8 +19,29 @@ export default class VooController {
 
   listVoo: RequestHandler = (request, response) => {
     try {
-      let voos = this.vooService.listVoo(request.query as IFilterVoo);
+      const voos = this.vooService.listVoo(request.query as IFilterVoo);
       response.status(200).send({ voos: voos });
+    } catch (error: any) {
+      response.status(400).send({ error: error.message });
+    }
+  };
+
+  getVoo: RequestHandler = (request, response) => {
+    try {
+      const vooId = request.params.id;
+      const voo = this.vooService.getVooById(vooId);
+      response.status(200).send({ voo });
+    } catch (error: any) {
+      response.status(400).send({ error: error.message });
+    }
+  };
+
+  changeStatus: RequestHandler = (request, response) => {
+    try {
+      const vooId = request.params.id;
+      const status = request.body.status;
+      const voo = this.vooService.changeStatus(vooId, status);
+      response.status(200).send({ voo });
     } catch (error: any) {
       response.status(400).send({ error: error.message });
     }
