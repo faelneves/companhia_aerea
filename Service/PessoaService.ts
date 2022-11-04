@@ -1,4 +1,4 @@
-import { IPessoa } from "../Interfaces/IPessoa";
+import { IFilterPessoa, IPessoa } from "../Interfaces/IPessoa";
 import { IPessoaRepository } from "../Repository/IPessoaRepository";
 
 export default class PessoaService {
@@ -8,5 +8,8 @@ export default class PessoaService {
   }
   createPerson(pessoa: IPessoa): IPessoa {
     return this.pessoaRepository.createPerson(pessoa);
+  }
+  listPerson(pessoaFilter: IFilterPessoa): Array<IPessoa> {
+    return this.pessoaRepository.listPerson(pessoaFilter);
   }
 }

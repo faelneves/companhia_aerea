@@ -3,3 +3,8 @@ export interface IPessoa {
   dtNasc: Date;
   cpf: string;
 }
+
+export interface IFilterPessoa {
+  nome?: string;
+  cpf?: string;
+}
