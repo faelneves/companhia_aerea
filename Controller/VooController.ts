@@ -46,13 +46,4 @@ export default class VooController {
 			response.status(400).send({ error: error.message });
 		}
 	};
-	getPassengerBy: RequestHandler = (request, response) => {
-		try {
-			const pessoaName = request.params?.name
-			const pessoaCpf = request.params?.cpf
-			const passageiro = this.vooService.getPassengerBy(pessoaName, pessoaCpf);
-		} catch (error: any) {
-			response.status(400).send({ error: error.message });
-		}
-	}
 }

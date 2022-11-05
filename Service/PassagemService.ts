@@ -9,4 +9,7 @@ export default class PassagemService {
 	emitPassagem(passagem: IPassagem) {
 		return this.passagemRepository.emitPassagem(passagem)
 	}
+	getPassagemById(id: string) {
+		return this.passagemRepository.getPassagemById(id);
+	}
 }
