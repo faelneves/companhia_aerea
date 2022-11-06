@@ -1,10 +1,10 @@
 import { IFilterPerson, IPerson } from "../Interfaces/IPerson";
 
-const pessoas: Array<IPerson> = [];
+const people: Array<IPerson> = [];
 
 export default class VooRepository {
 	createPerson(person: IPerson): IPerson {
-		pessoas.push(person);
+		people.push(person);
 		return person;
 	}
 
@@ -23,7 +23,7 @@ export default class VooRepository {
 	}
 
 	listPerson(personFilter: IFilterPerson): Array<IPerson> {
-		return pessoas.filter((person) => {
+		return people.filter((person) => {
 			this.verifyIfTheFilterByNameIsCorrect(personFilter, person)
 			this.verifyIfTheFilterByCpfIsCorrect(personFilter, person)
 			return true;
