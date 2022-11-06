@@ -1,5 +1,5 @@
 export interface ILocalization {
-  city: string;
-  estate: string;
-  contry: string;
+	city: string;
+	state: string;
+	contry: string;
 }

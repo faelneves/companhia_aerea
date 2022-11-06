@@ -1,33 +1,37 @@
-import VooControllerFactory from "./Factories/VooControllerFactory";
+import FlightControllerFactory from "./Factories/FlightControllerFactory";
 import express from "express";
 import dotenv from "dotenv";
-import PessoaControllerFactory from "./Factories/PessoaControllerFactory";
-import AviaoControllerFactory from "./Factories/AviaoControllerFactory";
-
+import PersonControllerFactory from "./Factories/PersonControllerFactory";
+import PlaneControllerFactory from "./Factories/PlaneControllerFactory";
+import TicketControllerFactory from "./Factories/TicketControllerFactory"
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 
-const vooController = VooControllerFactory.make();
-const pessoaController = PessoaControllerFactory.make();
-const aviaoController = AviaoControllerFactory.make();
+const flightController = FlightControllerFactory.make();
+const personController = PersonControllerFactory.make();
+const planeController = PlaneControllerFactory.make();
+const ticketController = TicketControllerFactory.make();
 
 app.get("/", (req, res) => {
-  res.send("Comapania Aerea");
+	res.send("Comapania Aerea");
 });
 
-app.post("/voo/create", vooController.createVoo);
-app.get("/voo/list", vooController.listVoo);
-app.get("/voo/get/:id", vooController.getVoo);
-app.patch("/voo/changeStatus/:id", vooController.changeStatus);
+app.post("/flight/create", flightController.createFlight);
+app.get("/flight/list", flightController.listFlight);
+app.get("/flight/get/:id", flightController.getFlights);
+app.patch("/flight/changeStatus/:id", flightController.changeStatus);
 
-app.post("/pessoa/create", pessoaController.createPerson);
-app.get("/pessoa/list", pessoaController.listPerson);
+app.post("/person/create", personController.createPerson);
+app.get("/person/list", personController.listPerson);
 
-app.post("/aviao/create", aviaoController.createAviao);
-app.get("/aviao/get/:id", aviaoController.getVoo);
+app.post("/plane/create", planeController.createPlane);
+app.get("/plane/get/:id", planeController.getFlight);
+
+app.post("/ticket/emit", ticketController.emitTicket)
+app.get("/ticket/get/:id", ticketController.getTicketById)
 
 app.listen(process.env.PORT);
 

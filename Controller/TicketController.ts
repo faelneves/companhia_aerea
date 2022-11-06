@@ -15,5 +15,13 @@ export default class TicketController {
 			response.status(400).send({ error: error.message })
 		}
 	}
-
+	getTicketById: RequestHandler = (request, response) => {
+		try {
+			const ticketId = request.params.id;
+			const ticket = this.ticketService.getTicketById(ticketId)
+			response.status(200).send({ ticket });
+		} catch (error: any) {
+			response.status(400).send({ error: error.message });
+		}
+	}
 }
