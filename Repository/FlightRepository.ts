@@ -1,4 +1,3 @@
-import { IPerson } from "../Interfaces/IPerson";
 import { IFilterFlight, IFlight, Status } from "../Interfaces/IFlight";
 import { IFlightRepository } from "./IFlightRepository";
 
@@ -10,18 +9,46 @@ export default class FlightRepository implements IFlightRepository {
 		return flight;
 	}
 
+	// verifyIfFlightsParamsArrayIsEmpty(params: IFilterFlight): boolean {
+	// 	if (params?.destination && params?.origin && params?.status && params?.departure) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
+
+	verifyIfDestinationCityIsEqualInParmsAndFlight(params: IFilterFlight, flight: IFlight): boolean {
+		if (params?.destination && params.destination.city != flight.destination.city) {
+			return false
+		}
+		return true
+	}
+	verifyIfOriginCityIsEqualInParmsAndFlight(params: IFilterFlight, flight: IFlight): boolean {
+		if (params?.origin && params.origin.city != flight.origin.city) {
+			return false
+		}
+		return true
+	}
+	verifyIfStatusIsEqualInParmsAndFlight(params: IFilterFlight, flight: IFlight): boolean {
+		if (params?.status && params.status != flight.status) {
+			return false
+		}
+		return true
+	}
+
+	verifyIDepartureCityIsEqualInParmsAndFlight(params: IFilterFlight, flight: IFlight): boolean {
+		if (params?.departure &&
+			params.departure.toLocaleDateString() != flight.departure.toLocaleDateString()) {
+			return false
+		}
+		return true
+	}
+
 	filterFlight(params: IFilterFlight): Array<IFlight> {
 		return flights.filter((flight) => {
-			if (params?.destination && params.destination.city != flight.destination.city)
-				return false;
-			if (params?.origin && params.origin.city != flight.origin.city)
-				return false;
-			if (params?.status && params.status != flight.status) return false;
-			if (
-				params?.departure &&
-				params.departure.toLocaleDateString() != flight.departure.toLocaleDateString()
-			)
-				return false;
+			this.verifyIfDestinationCityIsEqualInParmsAndFlight(params, flight);
+			this.verifyIDepartureCityIsEqualInParmsAndFlight(params, flight);
+			this.verifyIfOriginCityIsEqualInParmsAndFlight(params, flight);
+			this.verifyIfStatusIsEqualInParmsAndFlight(params, flight);
 			return true;
 		});
 	}
