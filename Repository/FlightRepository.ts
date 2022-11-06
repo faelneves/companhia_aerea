@@ -9,13 +9,6 @@ export default class FlightRepository implements IFlightRepository {
 		return flight;
 	}
 
-	// verifyIfFlightsParamsArrayIsEmpty(params: IFilterFlight): boolean {
-	// 	if (params?.destination && params?.origin && params?.status && params?.departure) {
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
-
 	verifyIfDestinationCityIsEqualInParmsAndFlight(params: IFilterFlight, flight: IFlight): boolean {
 		if (params?.destination && params.destination.city != flight.destination.city) {
 			return false
