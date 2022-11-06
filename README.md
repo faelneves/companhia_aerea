@@ -110,5 +110,5 @@ Segue abaixo link para os commits
 
 Temos também o relatório da versão sem refatorações e da versão após as refatorações
 
-Veja `relatório.html` para saber relatório antes da refatorações. e `relatorioDepoisDeRefatorar.html` para alterações depois das refatorações
+Veja `relatório.html` para saber relatório antes da refatorações, e `relatorioDepoisDeRefatorar.html` para alterações depois das refatorações
 
