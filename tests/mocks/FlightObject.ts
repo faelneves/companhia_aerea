@@ -14,6 +14,6 @@ export const flightOne = {
     contry: "Brasil",
   },
   departure: new Date(),
-  status: Status.CONFIRMED,
+  status: Status.PENDING,
   ocupation: 100,
 } as IFlight;

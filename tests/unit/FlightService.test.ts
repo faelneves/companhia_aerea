@@ -1,4 +1,5 @@
 import FlightServiceFactory from "../../Factories/FlightServiceFactory";
+import { Status } from "../../Interfaces/IFlight";
 import { flightOne } from "../mocks/FlightObject";
 import FlightRepositoryMock from "../mocks/FlightRepositoryMock";
 
@@ -81,6 +82,40 @@ describe("Flight Service #unit", () => {
       delete flightWithoutOcupation.ocupation;
       const flight = FlightServiceInstance.createFlight(flightWithoutOcupation);
       expect(flight.ocupation).toBe(0);
+    });
+
+    it("should throw an error when repository throws", () => {
+      FlightRepositoryInstance.createFlight = jest.fn((_id) => {
+        throw new Error("ID já existente na base de dados");
+      });
+
+      expect(() => FlightServiceInstance.createFlight(flightOne)).toThrow(
+        new Error("ID já existente na base de dados")
+      );
+    });
+  });
+
+  describe("changeStatus", () => {
+    it("should change status of flight", () => {
+      FlightRepositoryInstance.changeStatus = jest.fn((_id, status) => {
+        return { ...flightOne, status: status };
+      });
+
+      const id = flightOne.id;
+      const flightConfirmed = FlightServiceInstance.changeStatus(
+        id,
+        Status.CONFIRMED
+      );
+      expect(flightConfirmed.status).toBe(Status.CONFIRMED);
+    });
+
+    it("should trohow an error when repository throws", () => {
+      FlightRepositoryInstance.changeStatus = jest.fn((_id, _status) => {
+        throw new Error("voo não encontrado");
+      });
+      expect(() =>
+        FlightServiceInstance.changeStatus(flightOne.id, Status.CANCELED)
+      ).toThrow(new Error("voo não encontrado"));
     });
   });
 });
