@@ -8,7 +8,7 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
-  testMatch: ["**/tests/**/FlightService.test.(ts|js|tsx)"],
+  testMatch: ["**/tests/**/*.test.(ts|js|tsx)"],
   testEnvironment: "node",
   collectCoverageFrom: ["*/.{ts,tsx}"],
   coveragePathIgnorePatterns: [
