@@ -11,9 +11,9 @@ export default class PersonController {
   createPerson: RequestHandler = (request, response) => {
     try {
       const person = this.personService.createPerson(request.body as IPerson);
-      response.status(201).send({ person });
+      response.status(201).json({ person });
     } catch (error: any) {
-      response.status(400).send({ error: error.message });
+      response.status(400).json({ error: error.message });
     }
   };
 
@@ -22,9 +22,9 @@ export default class PersonController {
       const persons = this.personService.listPerson(
         request.query as IFilterPerson
       );
-      response.status(200).send({ persons: persons });
+      response.status(200).json({ persons: persons });
     } catch (error: any) {
-      response.status(400).send({ error: error.message });
+      response.status(400).json({ error: error.message });
     }
   };
 }

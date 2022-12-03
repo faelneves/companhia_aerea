@@ -10,18 +10,18 @@ export default class PlaneController {
   createPlane: RequestHandler = (request, response) => {
     try {
       const plane = this.planeService.createPlane(request.body as IPlane);
-      response.status(201).send(plane);
+      response.status(201).json(plane);
     } catch (error: any) {
-      response.status(400).send({ error: error.message });
+      response.status(400).json({ error: error.message });
     }
   };
   getFlight: RequestHandler = (request, response) => {
     try {
       const planeId = request.params.id;
       const plane = this.planeService.getPlaneById(planeId);
-      response.status(200).send(plane);
+      response.status(200).json(plane);
     } catch (error: any) {
-      response.status(400).send({ error: error.message });
+      response.status(400).json({ error: error.message });
     }
   };
 }
