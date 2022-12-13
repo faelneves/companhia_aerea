@@ -75,6 +75,8 @@ de uma companhia aérea, a RAPP.
 | `person` | `IPessoa` | **Obrigatório**. Informações da pessoa |
 
 
+#### Pista grupo de pessoas
+
 ```http
   GET /person/list
 ```
@@ -82,6 +84,8 @@ de uma companhia aérea, a RAPP.
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `personFilter` | `IFilterPessoa` | **Obrigatório**. Informações da Pessoa|
+
+#### Cria uma Aeronave
 
 ```http
   GET /plane/create
