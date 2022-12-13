@@ -75,7 +75,7 @@ de uma companhia aérea, a RAPP.
 | `person` | `IPessoa` | **Obrigatório**. Informações da pessoa |
 
 
-#### Pista grupo de pessoas
+#### Lista grupo de pessoas
 
 ```http
   GET /person/list
