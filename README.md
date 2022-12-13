@@ -88,7 +88,7 @@ de uma companhia aérea, a RAPP.
 #### Cria uma Aeronave
 
 ```http
-  GET /plane/create
+  POST /plane/create
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
